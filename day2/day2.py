@@ -20,16 +20,8 @@ def move_pt_2(direction: str, change: int, location: list):
         location[2] += change
 
 def prep_file(filename: str):
-    directions = []
-    
     with open(filename) as new_file:
-        for line in new_file:
-            line = line.strip()
-            parts = line.split(' ')
-            parts[1] = int(parts[1])
-            directions.append(parts)
-
-    return directions
+        return [(c.split()[0], int(c.split()[1])) for c in new_file.read().splitlines()]
 
 if __name__ == '__main__':
     directions = prep_file('input.txt')     # get list of directions
